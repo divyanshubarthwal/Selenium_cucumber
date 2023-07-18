@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="0.192" tests="1" skipped="0" failures="0" errors="0">
+<testcase classname="Search and Place the order for Products" name="Search Experience for product search in both gome Offers page" time="0.022">
+<system-out><![CDATA[
+Given User is on GreenCart Landing Page.....................................passed
+When user searched with shortname "Tom" and extracted actual name of project.passed
+Then user searched for "Tom" shortname in offers page to check if product exist with same name.passed
+And validate product name in offers page matches with Landing Page..........passed
+]]></system-out>
+</testcase>
+</testsuite>
