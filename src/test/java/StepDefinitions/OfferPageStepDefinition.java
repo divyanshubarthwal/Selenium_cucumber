@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import PageObjects.LandingPage;
 import PageObjects.OffersPage;
+import PageObjects.PageObjectManager;
 import Utils.TestContextSetup;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -22,7 +23,8 @@ public class OfferPageStepDefinition {
 	public String landingPageProductName;
 	public String offerPageProductName;
 	TestContextSetup testContextSetup;
-	
+	PageObjectManager pageObjectManager;
+	//Factory design pattern
 	public OfferPageStepDefinition(TestContextSetup testContextSetup) {
 		this.testContextSetup=testContextSetup;
 	}
@@ -43,18 +45,13 @@ public class OfferPageStepDefinition {
 	//loosely coupled method
 	public void switchToOffersPage() {
 		//if switched to offer page-?skip below part
+		LandingPage landingpage=testContextSetup.pageObjectManager.getLandingPage();
 		
 		//if(testContextSetup.driver.getCurrentUrl().equals("https://rahulshettyacademy.com/seleniumPractise/#/offers"))
-		LandingPage landingpage=new LandingPage(testContextSetup.driver);
 		landingpage.selectTopDealsPage();
 		
 		testContextSetup.driver.findElement(By.linkText("Top Deals")).click();
-	    Set<String> s1=testContextSetup.driver.getWindowHandles();
-	    Iterator<String> it=s1.iterator();
-	    String parentWindow=it.next();
-	    String childWindow=it.next();
-	    
-	    testContextSetup.driver.switchTo().window(childWindow);
+		testContextSetup.genericUtils.SwitchWindowToChild();
 	}
 
 	

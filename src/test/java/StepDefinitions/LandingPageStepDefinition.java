@@ -38,7 +38,7 @@ public class LandingPageStepDefinition {
 	@When("user searched with shortname {string} and extracted actual name of project")
 	public void user_searched_with_shortname_and_extracted_actual_name_of_project(String string) {
 		
-		LandingPage landingpage=new LandingPage(testContextSetup.driver);
+		LandingPage landingpage=testContextSetup.pageObjectManager.getLandingPage();
 		landingpage.searchItems(string);
 		//testContextSetup.driver.findElement(By.xpath("//input[@type='search']")).sendKeys(string);
 		 testContextSetup.landingPageProductName=  landingpage.getProductName().split("-")[0].trim();
